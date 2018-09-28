@@ -1,6 +1,7 @@
 package ru.yarsu.lab2tree;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -54,6 +55,10 @@ public class Node {
             }
         }
         return null;
+    }
+
+    public Iterable<Node> getChildrenIterator(){
+        return children;
     }
 
 }

@@ -1,9 +1,11 @@
 package ru.yarsu.lab2tree;
 
+import java.util.Iterator;
+
 /**
  * Входная точка для дерева
  */
-public class Tree {
+public class Tree{
 
 
     public Node rootNode;
@@ -24,4 +26,15 @@ public class Tree {
         return rootNode;
     }
 
+    public void iterateNodes(TreeIteratorHandler handler){
+        iterateNodesInternal(0, getRootNode(), handler);
+    }
+
+    private void iterateNodesInternal(Integer level, Node node, TreeIteratorHandler handler){
+        if(node != null) handler.handleNode(level, node);
+
+        for (Node child: node.getChildrenIterator()) {
+            iterateNodesInternal(level+1, child, handler);
+        }
+    }
 }
